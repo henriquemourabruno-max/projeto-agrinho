@@ -3,118 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudo - Agrinho 2026</title>
+    <title>Movimento Agro Sustentável | Agrinho 2026</title>
     <style>
+        /* Reset e Configurações de Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
+
         body {
-            background-color: #f7f6f2;
-            color: #2b2b2b;
-            padding: 40px 20px;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
         }
-        .documento {
-            max-width: 850px;
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 60px;
-            border: 1px solid #e1dfd8;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            padding: 0 20px;
         }
-        .cabecalho-projeto {
-            text-align: center;
-            border-bottom: 2px solid #3d5a80;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+
+        /* Barra de Navegação */
+        .topo-nav {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
-        .cabecalho-projeto h1 {
-            font-size: 28px;
-            color: #293241;
-            margin-bottom: 10px;
+
+        .topo-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
         }
-        .cabecalho-projeto p {
-            font-family: Arial, sans-serif;
-            font-size: 13px;
-            color: #6c757d;
+
+        .marca {
+            font-size: 22px;
+            font-weight: 800;
+            color: #059669;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .paragrafo-introducao {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            text-indent: 40px;
-            text-align: justify;
+
+        .marca span {
+            color: #10b981;
         }
-        .secao-topico {
-            margin-bottom: 35px;
+
+        .menu-links a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 25px;
+            font-size: 15px;
+            transition: color 0.3s;
         }
-        .secao-topico h3 {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            color: #3d5a80;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+
+        .menu-links a:hover {
+            color: #059669;
         }
-        .secao-topico p {
-            font-size: 16px;
-            line-height: 1.7;
-            text-align: justify;
-            color: #3a3a3a;
-        }
-        .caixa-citacao {
-            border: 1px solid #ced4da;
-            background-color: #f8f9fa;
-            padding: 25px;
-            margin: 30px 0;
-            font-style: italic;
-            border-left: 4px solid #3d5a80;
-        }
-        .rodape-doc {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e1dfd8;
+
+        /* Seção Hero / Boas-Vindas */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(4, 47, 31, 0.85) 0%, rgba(6, 78, 59, 0.85) 100%), url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 180px 0 120px 0;
+            color: #ffffff;
             text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            color: #6c757d;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+            color: #d1fae5;
+        }
+
+        .btn-acao {
+            background-color: #10b981;
+            color: #ffffff;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-acao:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* Seção Manifesto */
+        .manifesto-section {
+            padding: 100px 0;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .titulo-secao {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .divisor-verde {
+            width: 60px;
+            height: 4px;
+            background-color: #10b981;
+            margin: 0 auto 40px auto;
+            border-radius: 2px;
+        }
+
+        .manifesto-texto {
+            font-size: 18px;
+            max-width: 850px;
+            margin: 0 auto;
+            color: #475569;
+            text-align: justify;
+        }
+
+        /* Grid de Soluções Sustentáveis */
+        .solucoes-section {
+            padding: 100px 0;
+        }
+
+        .grid-solucoes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .box-solucao {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 10px 15px -3px rgba(0, 0, 0, 0.03);
+            border-top: 4px solid #10b981;
+            transition: transform 0.3s;
+        }
+
+        .box-solucao:hover {
+            transform: translateY(-5px);
+        }
+
+        .box-solucao h3 {
+            font-size: 22px;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .box-solucao p {
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        /* Seção de Métricas / Números */
+        .metricas-section {
+            background-color: #064e3b;
+            color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .grid-metricas {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .metrica-item h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #34d399;
+            margin-bottom: 5px;
+        }
+
+        .metrica-item p {
+            font-size: 16px;
+            color: #a7f3d0;
+            font-weight: 500;
+        }
+
+        /* Seção de Contato/Engajamento */
+        .contato-section {
+            padding: 100px 0;
+            background-color: #ffffff;
+        }
+
+        .formulario-contato {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .grupo-campo {
+            margin-bottom: 20px;
+        }
+
+        .grupo-campo label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        .grupo-campo input, .grupo-campo textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .grupo-campo input:focus, .grupo-campo textarea:focus {
+            border-color: #10b981;
+        }
+
+        .btn-enviar {
+            width: 100%;
+            background-color: #064e3b;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-enviar:hover {
+            background-color: #042f1f;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .topo-nav .container { flex-direction: column; gap: 15px; }
+            .menu-links a { margin: 0 10px; }
+            .hero-section h1 { font-size: 32px; }
+            .grid-metricas { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <div class="documento">
-        
-        <header class="cabecalho-projeto">
-            <h1>AGRO FORTE, FUTURO SUSTENTÁVEL</h1>
-            <p>ANÁLISE TEMÁTICA — PROGRAMA AGRINHO 2026</p>
-        </header>
-
-        <p class="paragrafo-introducao">
-            A análise do desenvolvimento agrário sob a óptica da sustentabilidade exige a compreensão de que os recursos naturais não são infinitos. O equilíbrio dinâmico entre o avanço tecnológico das lavouras e a preservação ecológica regional determina o sucesso econômico de longo prazo e a segurança da biodiversidade local.
-        </p>
-
-        <div class="secao-topico">
-            <h3>1. Preservação Hidrográfica e Manejo de Solo</h3>
-            <p>A retenção da água doce nas bacias hidrográficas rurais depende diretamente da manutenção da vegetação nativa circundante. O manejo sustentável do solo, feito por meio do plantio direto e da rotação contínua de culturas, garante a conservação dos nutrientes orgânicos essenciais e diminui os riscos de erosão severa provocada por eventos climáticos extremos.</p>
+    <nav class="topo-nav">
+        <div class="container">
+            <div class="marca">Agro<span>Futuro</span></div>
+            <div class="menu-links">
+                <a href="#inicio">Início</a>
+                <a href="#manifesto">Manifesto</a>
+                <a href="#solucoes">Pilares</a>
+                <a href="#participe">Participe</a>
+            </div>
         </div>
+    </nav>
 
-        <div class="secao-topico">
-            <h3>2. Inovação Biológica e Redução de Insumos</h3>
-            <p>O campo inteligente prioriza o uso de bioinsumos e defensores ecológicos desenvolvidos em laboratório a partir de microrganismos naturais. Esse avanço técnico protege os polinizadores, estabiliza a fauna microbiana subterrânea e assegura a produção de alimentos saudáveis com menor dependência de compostos químicos artificiais.</p>
+    <header id="inicio" class="hero-section">
+        <div class="container">
+            <h1>Agro Forte, Futuro Sustentável</h1>
+            <p>Conectando a potência produtiva do campo brasileiro às demandas ambientais globais de 2026.</p>
+            <a href="#manifesto" class="btn-acao">Explorar Projeto</a>
         </div>
+    </header>
 
-        <div class="caixa-citacao">
-            "A verdadeira força da produção agrícola moderna reside na sua capacidade de cooperar com as leis da natureza, garantindo colheitas fartas tanto para as comunidades atuais quanto para as futuras gerações."
+    <section id="manifesto" class="manifesto-section">
+        <div class="container">
+            <h2 class="titulo-secao">Nosso Manifesto</h2>
+            <div class="divisor-verde"></div>
+            <p class="manifesto-texto">
+                A sustentabilidade no campo não representa um freio à produção, mas sim o motor que garante a sua longevidade. O projeto Agrinho 2026 propõe uma visão em que a tecnologia agrícola, o respeito aos mananciais de água, a proteção ativa do solo e a preservação florestal trabalham juntos. Ser forte no agronegócio significa usar a inteligência ecológica para colher safras abundantes hoje, assegurando que as próximas gerações herdem uma terra rica, viva e fértil.
+            </p>
         </div>
+    </section>
 
-        <footer class="rodape-doc">
-            <p>Documento formatado para apresentação escolar — Concurso Agrinho 2026.</p>
-        </footer>
+    <section id="solucoes" class="solucoes-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="titulo-secao">Pilares do Desenvolvimento</h2>
+                <div class="divisor-verde"></div>
+            </div>
+            
+            <div class="grid-solucoes">
+                <div class="box-solucao">
+                    <h3>Manejo Biológico</h3>
+                    <p>Adoção de bioinsumos e defensores orgânicos que mantêm os microrganismos protetores do solo ativos, reduzindo custos químicos e resíduos.</p>
+                </div>
+                <div class="box-solucao">
+                    <h3>Sistemas Integrados</h3>
+                    <p>Uso da metodologia ILPF (Integração Lavoura-Pecuária-Floresta) que otimiza o uso do solo e maximiza o sequestro de gases de efeito estufa.</p>
+                </div>
+                <div class="box-solucao">
+                    <h3>Precisão Hídrica</h3>
+                    <p>Sistemas automatizados de irrigação localizada que evitam o desperdício, monitorando em tempo real as reais necessidades hídricas da planta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
+    <section class="metricas-section">
+        <div class="container">
+            <div class="grid-metricas">
+                <div class="metrica-item">
+                    <h2>100%</h2>
+                    <p>Consciência Ecológica</p>
+                </div>
+                <div class="metrica-item">
+                    <h2>0%</h2>
+                    <p>Desperdício de Água</p>
+                </div>
+                <div class="metrica-item">
+                    <h2>2026</h2>
+                    <p>Ano de Transformação</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="participe" class="contato-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="titulo-secao">Faça Parte da Mudança</h2>
+                <div class="divisor-verde"></div>
+            </div>
+
+            <div class="formulario-contato">
+                <form onsubmit="event.preventDefault(); alert('Inscrição simulada com sucesso!');">
+                    <div class="grupo-campo">
+                        <label for="nome">Seu Nome ou Escola:</label>
+                        <input type="text" id="nome" placeholder="Ex: Escola Estadual Verdejante" required>
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="ideia">Sua Ideia Sustentável para o Campo:</label>
+                        <textarea id="ideia" rows="4" placeholder="Descreva brevemente como você imagina um campo mais sustentável..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar">Enviar Proposta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Concurso Agrinho. Produção Forte, Consciência Limpa e Futuro Assegurado.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
